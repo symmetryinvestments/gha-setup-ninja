@@ -24,7 +24,7 @@ try {
     const [error, platform] = selectPlatforn(core.getInput('platform'));
     if (error) throw error
 
-    const url = new URL(`https://github.com/ninja-build/ninja/releases/download/v${version}/ninja-${platform}.zip`)
+    const url = new URL(`https://github.com/symmetryinvestments/ninja/releases/download/v${version}/ninja-${platform}.zip`)
 
     if (proxyServer) {
         console.log(`using proxy ${proxyServer}`)
@@ -73,7 +73,7 @@ try {
             console.log(`$ ${ninjaName} --version`)
             console.log(installedVersion)
 
-            if (installedVersion != version) {
+            if (!version.startsWith(installedVersion)) {
                 throw new Error('incorrect version detected (bad PATH configuration?)')
             }
         })
